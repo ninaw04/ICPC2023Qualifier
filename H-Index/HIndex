@@ -1,0 +1,49 @@
+package pacnw_practice;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class HIndex {
+	public static void main(String[] args) throws Exception {
+		
+		Scanner scnr = new Scanner(System.in);
+		int papers = scnr.nextInt();
+		int[] citations = new int[papers];
+;		
+		for(int i = 0; i < papers; i++) {
+			citations[i] = scnr.nextInt();
+		}
+		
+		Arrays.sort(citations);
+		System.out.println(findIndex(citations));
+				
+		
+	}
+	
+	public static int findIndex(int[] array) {
+		
+		int max = array[0];
+		int i = 0;
+		boolean result = false;
+		
+//		while(i<array.length) {
+//			if(array[i]-1 <= (array.length - 1 - i)) {
+//				max = array[i];
+//			}
+//			i++;
+//		
+//		}
+		while(!result) {
+			if(array[i]-1 <= (array.length - 1 - i)) {
+				max = array[i];
+				i++;
+			}
+			else {
+				result = true;
+			}
+		}
+		return max;
+	}
+	
+	
+}
